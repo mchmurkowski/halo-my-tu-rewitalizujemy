@@ -1,0 +1,18 @@
+#+TITLE: Halo! My tu rewitalizujemy
+#+AUTHOR: Michał Chmurkowski
+
+Siedzę sobie przy biurku w robocie, nogi wyjebane na kontenerku mam, scrolluję LinkedIn'a. U koleżanki dzwoni telefon. Ja zwykle odbieram dopiero za drugim razem, bo mogę mieć pewność, że to coś ważnego, być może... zwykle jednak nic ważnego. Ona jednak odbiera.
+
+#+BEGIN_QUOTE
+- Czy nieruchomość znajduje się na obszarze rewitalizacji sprawdzamy po adresie. - słyszę jak mówi do klienta. A po chwili ciszy - Nic mi po numerach działek. Pan myśli, że będę siedziała i na mapie szukała?
+#+END_QUOTE
+
+W mojej głowie zaczyna się świecić lampka. A co gdyby mogła to sprawdzić przy pomocy... wiersza poleceń?
+
+* Co to jest?
+
+=halo-my-tu-rewitalizujemy.py= to uruchamiany z wiersza poleceń skrypt w języku Python, który sprawdza czy działka o podanym numerze znajduje się na obszarze rewitalizacji w Dąbrowie Górniczej.
+
+* Po co to komu?
+
+Nikomu na nic.
