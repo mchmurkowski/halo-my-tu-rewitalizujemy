@@ -61,10 +61,21 @@ if __name__ == "__main__":
                 district_number: str = districts[district_choice - 1][0]
                 break
             else:
-                print("Podaj nr z lewej strony wybranego obrębu.")
-        # TODO: a more graceful exit
+                district_try_again = input("Wybrano numer spoza listy. Chcesz spróbować ponownie? [t/n] ")
+                match district_try_again.lower():
+                    case "t":
+                        print(f"Podaj nr z lewej strony wybranego obrębu od 1 do {len(districts) +1}.")
+                        continue
+                    case _:
+                        sys.exit("Bez numeru obrębu nie sprawdzę działki w ULDK")
         except ValueError:
-            sys.exit("Nie wiesz, który obręb? Nie pomogę...")
+            district_try_again_on_e: str = input("Znasz obręb, prawda? [t/n] ")
+            match district_try_again_on_e.lower():
+                case "t":
+                    print("Podaj nr z lewej strony wybranego obrębu.")
+                    continue
+                case _:
+                    sys.exit("Nie wiesz, który obręb? Nie pomogę...")
 
     # Regex: one or more digits maybe followed by a single slash and one or more digits
     plot_pattern = re.compile(r"^\d+(/{1}\d+)?$")
@@ -75,7 +86,7 @@ if __name__ == "__main__":
             break
         else:
             print("Niewłaściwy format numeru działki.")
-            plot_try_again = input("Chcesz spróbować jeszcze raz? [t/n] ")
+            plot_try_again: str = input("Chcesz spróbować jeszcze raz? [t/n] ")
             match plot_try_again.lower():
                 case "t":
                     continue
