@@ -1,3 +1,4 @@
+import re
 import sys
 from urllib import request
 
@@ -65,11 +66,21 @@ if __name__ == "__main__":
         except ValueError:
             sys.exit("Nie wiesz, który obręb? Nie pomogę...")
 
-    # TODO: validate plot number input against a regex?
+    # Regex: one or more digits maybe followed by a single slash and one or more digits
+    plot_pattern = re.compile(r"^\d+(/{1}\d+)?$")
     while True:
         plot_number_input: str = input("Wpisz numer działki: ")
-        plot_number: str = plot_number_input
-        break
+        if bool(re.match(plot_pattern, plot_number_input)):
+            plot_number: str = plot_number_input
+            break
+        else:
+            print("Niewłaściwy format numeru działki.")
+            plot_try_again = input("Chcesz spróbować jeszcze raz? [t/n] ")
+            match plot_try_again.lower():
+                case "t":
+                    continue
+                case _:
+                    sys.exit("Wróc z numerem działki w prawidłowym formacie.")
 
     full_parcel_id: str = f"246501_1.{district_number}.{plot_number}"
     parcel_resp: list[str] = get_parcel_from_uldk(full_parcel_id).split(sep=";")
