@@ -11,7 +11,43 @@ W mojej głowie zaczyna się świecić lampka. A co gdyby mogła to sprawdzić p
 
 * Co to jest?
 
-=halo-my-tu-rewitalizujemy.py= to uruchamiany z wiersza poleceń skrypt w języku Python, który sprawdza czy działka o podanym numerze znajduje się na obszarze rewitalizacji w Dąbrowie Górniczej.
+=halo-my-tu-rewitalizujemy.py= to uruchamiany z wiersza poleceń skrypt w języku Python, który sprawdza czy działka o podanym numerze znajduje się [[https://www.bip.dabrowa-gornicza.pl/5913/dokument/186008][na obszarze rewitalizacji w Dąbrowie Górniczej]]. Do sprawdzenia geometerii wyszukiwanej działki skrypt wykorzystuje [[https://uldk.gugik.gov.pl/][Usługę lokalizacji działek ewidencyjnych (ULDK)]] udostępnioną przez Główny Urząd Geodezji i Kartografii (GUGiK).
+
+* Jak używać?
+
+** Pobieranie repozytorium
+
+Przy pomocy =git=:
+
+#+BEGIN_SRC bash
+git clone https://github.com/mchmurkowski/halo-my-tu-rewitalizujemy.git
+#+END_SRC
+
+Alternatywnie, repozytorium można też pobrać w postaci pliku .zip przy pomocy zielonego przycisku /Code/, a potem /Dowload ZIP/, a następnie rozpakować.
+
+** Uruchomienie skryptu
+
+Jeżeli masz do dyspozycji =make= i =uv=, to będąc w folderze skryptu wystarczy wklepać:
+
+#+BEGIN_SRC bash
+make
+#+END_SRC
+
+Powyższe polecenie zainstaluje wymagane biblioteki i uruchomi skrypt.
+
+Możesz też uruchomić skrypt używając samego =uv= bezpośrednio:
+
+#+BEGIN_SRC bash
+uv run halo-my-tu-rewitalizujemy.py
+#+END_SRC
+
+*** Co jeżeli nie mam ani =make= ani =uv=?
+
+A Pythona chociaż masz? Zainstaluj wymagane biblioteki (=geopandas>=1.1.1= i =shapely>=2.1.2=), a potem uruchom skrypt:
+
+#+BEGIN_SRC bash
+python3 halo-my-tu-rewitalizujemy.py
+#+END_SRC
 
 * Po co to komu?
 
