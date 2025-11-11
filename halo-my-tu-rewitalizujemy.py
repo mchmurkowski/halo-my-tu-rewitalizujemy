@@ -19,7 +19,6 @@ if __name__ == "__main__":
         is_dg_input: str = input("Czy działka jest w Dąbrowie Górniczej? [t/n] ")
         match is_dg_input.lower():
             case "t":
-                is_dg = True
                 break
             case "n":
                 sys.exit("My tu nie rewitalizujemy.")
