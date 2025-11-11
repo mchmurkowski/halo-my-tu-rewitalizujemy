@@ -64,7 +64,7 @@ if __name__ == "__main__":
                 district_try_again = input("Wybrano numer spoza listy. Chcesz spróbować ponownie? [t/n] ")
                 match district_try_again.lower():
                     case "t":
-                        print(f"Podaj nr z lewej strony wybranego obrębu od 1 do {len(districts) +1}.")
+                        print(f"Podaj nr z lewej strony wybranego obrębu od 1 do {len(districts)}.")
                         continue
                     case _:
                         sys.exit("Bez numeru obrębu nie sprawdzę działki w ULDK")
