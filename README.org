@@ -43,7 +43,7 @@ uv run halo-my-tu-rewitalizujemy.py
 
 *** Co jeżeli nie mam ani =make= ani =uv=?
 
-A Pythona chociaż masz? Zainstaluj wymagane biblioteki (=geopandas>=1.1.1= i =shapely>=2.1.2=), a potem uruchom skrypt:
+A Pythona chociaż masz? Zainstaluj wymagane biblioteki (=shapely>=2.1.2=), a potem uruchom skrypt:
 
 #+BEGIN_SRC bash
 python3 halo-my-tu-rewitalizujemy.py
