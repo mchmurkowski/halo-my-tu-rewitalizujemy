@@ -24,56 +24,45 @@ if __name__ == "__main__":
             case _:
                 print("Odpowiedz 't' lub 'n'.")
 
-    districts: list[tuple[str, str]] = [
-        ("0001", "Błędów"),
-        ("0002", "Bugaj"),
-        ("0004", "Kuźniczka"),
-        ("0005", "Łazy"),
-        ("0006", "Łęka"),
-        ("0007", "Łosień"),
-        ("0008", "Marianki"),
-        ("0009", "Okradzionów"),
-        ("0010", "Ratanice"),
-        ("0011", "Sikorka"),
-        ("0012", "Strzemieszyce Małe"),
-        ("0013", "Strzemieszyce Wielkie"),
-        ("0014", "Trzebiesławice"),
-        ("0015", "Trzebyczka"),
-        ("0016", "Tucznawa"),
-        ("0017", "Ujejsce"),
-        ("0018", "Ząbkowice"),
-        ("0019", "Dąbrowa Górnicza I"),
-        ("0020", "Dąbrowa Górnicza II"),
-        ("0021", "Dąbrowa Górnicza III"),
-        ]
+    districts: dict[str, str] = {
+        "0001": "Błędów",
+        "0002": "Bugaj",
+        "0004": "Kuźniczka",
+        "0005": "Łazy",
+        "0006": "Łęka",
+        "0007": "Łosień",
+        "0008": "Marianki",
+        "0009": "Okradzionów",
+        "0010": "Ratanice",
+        "0011": "Sikorka",
+        "0012": "Strzemieszyce Małe",
+        "0013": "Strzemieszyce Wielkie",
+        "0014": "Trzebiesławice",
+        "0015": "Trzebyczka",
+        "0016": "Tucznawa",
+        "0017": "Ujejsce",
+        "0018": "Ząbkowice",
+        "0019": "Dąbrowa Górnicza I",
+        "0020": "Dąbrowa Górnicza II",
+        "0021": "Dąbrowa Górnicza III",
+    }
 
-    # MAYBE: consider using a dict with the canonical district numbers
     while True:
         print("W którym obrębie?")
-        for n, district in enumerate(districts):
-            print(f"{n + 1} - {district[1]}")
-        district_input: str = input("Wybierz numer [1-20]: ")
-        try:
-            district_choice: int = int(district_input)
-            if district_choice in range(1, len(districts) + 1):
-                district_number: str = districts[district_choice - 1][0]
-                break
-            else:
-                district_try_again = input("Wybrano numer spoza listy. Chcesz spróbować ponownie? [t/n] ")
-                match district_try_again.lower():
-                    case "t":
-                        print(f"Podaj nr z lewej strony wybranego obrębu od 1 do {len(districts)}.")
-                        continue
-                    case _:
-                        sys.exit("Bez numeru obrębu nie sprawdzę działki w ULDK")
-        except ValueError:
-            district_try_again_on_e: str = input("Znasz obręb, prawda? [t/n] ")
-            match district_try_again_on_e.lower():
+        for key, value in districts.items():
+            print(f"{key.lstrip("0")} - {value}")
+        district_input: str = input("Wybierz numer [1-21]: ")
+        district_number: str = district_input.zfill(4)
+        if district_number in districts:
+            break
+        else:
+            district_try_again = input("Wybrano nieprawidłowy numer obrębu. Chcesz spróbować ponownie? [t/n] ")
+            match district_try_again.lower():
                 case "t":
-                    print("Podaj nr z lewej strony wybranego obrębu.")
+                    print("Podaj numer z lewej strony wybranego obrębu.")
                     continue
                 case _:
-                    sys.exit("Nie wiesz, który obręb? Nie pomogę...")
+                    sys.exit("Bez numeru obrębu nie sprawdzę działki.")
 
     # Regex: one or more digits maybe followed by a single slash and one or more digits
     plot_pattern = re.compile(r"^\d+(/{1}\d+)?$")
